@@ -1,0 +1,15 @@
+
+
+<h1>You fell in love with: <%= thingVar %> </h1>
+
+
+<p>this is an example of rendering a dynamic web page
+    using ejs! Here's an example supplied by you: <%= thingVar2 %>
+</p>
+
+<%  if(thingVar.toLowerCase() === "rusty"){ %>
+       <p>Good Choice!</p>
+<%   }  %>
+<%   else{  %>
+       <p>"That's unfortunate, if only you had met my friend rusty</p>
+<%=    }     %>
