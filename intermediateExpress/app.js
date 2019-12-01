@@ -7,6 +7,17 @@ app.get("/", function(req, res){
     //res.send("Welcome to the home page");
 });
 
+app.get("/posts", function(req, res){
+    var posts = [
+    {title: "Post 1", author: "Elias"},
+    {title: "Post 2", author: "Faggheti"},
+    {title: "Post 3", author: "Jew"},
+    ];
+
+    res.render("posts.ejs", {posts: posts});
+
+});
+
 app.get("/fallinlovewith/:thing", function(req, res){
     var thing = req.params.thing;
     var thing2 = "fuck you!"
