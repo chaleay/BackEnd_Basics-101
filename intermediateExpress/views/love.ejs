@@ -1,0 +1,21 @@
+
+
+<h1>You fell in love with: <%= thingVar %> </h1>
+
+
+<p>this is an example of rendering a dynamic web page
+    using ejs! Here's an example supplied by you: <%= thingVar2 %>
+</p>
+
+<%  if(thingVar.toLowerCase() === "rusty"){ %>
+       <p>Good Choice! Rusty is a bitch</p>
+<%   }  else { %>
+
+       <p>"That's unfortunate, if only you had met my friend rusty</p>
+<%   }    %>
+
+<!--This is a comment. Comments are not displayed in the browser
+<%= %> - the value that this code returns will be added to html page
+<% %> - don't display it to the html page - used for logic operators, else, if 
+
+-->
