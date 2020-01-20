@@ -1,24 +1,12 @@
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/blog_demo");
 
-//Post first
-var postSchema = new mongoose.Schema({
-    title: String,
-    content: String
-
-});
-
-var Post = mongoose.model("Post", postSchema);
+//connect schemas
+var Post = require("./models/post");
+var User = require("./models/user");
 
 
-//user
-var userSchema = new mongoose.Schema({
-    email: String,
-    name: String,
-    posts: [postSchema]
-});
 
-var User = mongoose.model("User", userSchema);
 
 var newUser = new User({
     email: "me@txstate.edu",
@@ -67,8 +55,8 @@ User.findOne({name: "Me Me"}, function(err, user){
     else{
         console.log("user found...");
         user.posts.push({
-            title: "bitch",
-            content: "test"
+            title: "bitch2",
+            content: "test2"
 
         });
         //need to save this ref to db!

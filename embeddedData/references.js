@@ -1,39 +1,19 @@
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/blog_demo_2");
 
-//Post first
-var postSchema = new mongoose.Schema({
-    title: String,
-    content: String
+//connect schemas
+var Post = require("./models/post");
+var User = require("./models/user");
 
-});
-
-var Post = mongoose.model("Post", postSchema);
-
-
-//user
-var userSchema = new mongoose.Schema({
-    email: String,
-    name: String,
-    //in this file, reference id of posts rather than embed posts
-    posts: [
-        {
-        //the id
-        type: mongoose.Schema.Types.ObjectId,
-        //the type
-        ref: "Post"
-        }
-    ]
-});
-
-var User = mongoose.model("User", userSchema);
-
-
+/*
 User.create({
     email: "me@txstate.edu",
     name: "Bob Belcher"
 });
+*/
 
+//creating a post and linking it to our current user
+/*
 //this post will be saved to the posts collection, and the user will have a reference to it
 Post.create({
     title: "How to eat food like a proper gentleman pt 1",
@@ -50,6 +30,33 @@ Post.create({
             });
         }
     });
+});
+*/
+
+
+//Find user
+//find all posts for that user
+
+//without using populate function
+User.findOne({email: "me@txstate.edu"}, function(err, user){
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log(user);
+    }
+});
+
+
+
+//using populate to retreive data for post object ids
+User.findOne({email: "me@txstate.edu"}).populate("posts").exec(function(err, user){
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log(user);
+    }
 });
 
 
